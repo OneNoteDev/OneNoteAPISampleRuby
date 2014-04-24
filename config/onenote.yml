@@ -1,0 +1,15 @@
+defaults: &defaults
+  clientId: 000000004811782B
+  secret: aLXagnA3XH63id4bwO0QrFvSWszNKrta
+  callback: http://onenotedemo.evidentpoint.com:3080/callback
+
+
+#only modify these if you need to override default behaviour based on env!
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

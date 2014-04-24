@@ -1,0 +1,1 @@
+ONENOTE_CONFIG = YAML.load_file("config/onenote.yml")[Rails.env]
