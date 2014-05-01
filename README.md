@@ -35,10 +35,8 @@ As the developer, you'll need to have a [Microsoft account](http://msdn.microsof
 After you've setup your development tools, and installed the prerequisites listed above,....
 
    1. Download the repo as a ZIP file to your local computer, and extract the files. Or, clone the repository into a local copy of Git. 
-   2. If you are testing on your own desktop, you can't use http://localhost as your domain, so edit your Hosts file (in C:\Windows\System32\drivers\etc for Windows machines and /private/etc for Macs) and map your local server IP address to a new domain name, as in the following example.
-![](https://github.com/OneNoteDev/OneNoteAPISampleRuby-Private/blob/master/doc/HostsFile.png)
-   3. Get a client ID string and copy it into the file: config/onenote.yml. Use the domain that you have mapped to your local server IP address for the root domain and the redirect URL, as in the following example.
-![](https://github.com/OneNoteDev/OneNoteAPISampleRuby-Private/blob/master/doc/MSAScreenShot.png)
+   2. If you are testing on your own desktop, you can't use http://localhost as your domain, so edit your Hosts file (in C:\Windows\System32\drivers\etc for Windows machines and /private/etc for Macs) and map your local server IP address to a new domain name.
+   3. Get a client ID string and copy it into the file: config/onenote.yml. Use the domain that you have mapped to your local server IP address for the root domain and the redirect URL.
    5. Build and run the Ruby on rails app.
    6. Authenticate in the running app, using your Microsoft account. 
    7. Allow the app to create new pages in OneNote. 
