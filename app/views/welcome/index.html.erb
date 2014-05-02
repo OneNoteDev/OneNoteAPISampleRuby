@@ -1,6 +1,10 @@
 <h1>OneNote Service Ruby on Rails Sample</h1>
 <div>
   <div id="OneNoteForm">
+      <p>
+      <button type="button" id="login_btn" onclick="Login()">LOGIN</button>
+    </p>
+  
     <form method="POST" action="submit">
       <button type="submit" name="submit" value="text">Create OneNote Page with Text</button> <br />
       <button type="submit" name="submit" value="textimage">Create OneNote Page with Text and Images</button><br />
@@ -9,9 +13,7 @@
       <button type="submit" name="submit" value="file">Create OneNote Page with an Embedded File</button>
     </form>
 
-    <p>
-      <button type="button" id="login_btn" onclick="Login()">LOGIN</button>
-    </p>
+
   </div>
 </div>
 <!--[if IE]><script type="text/javascript">window['isIE'] = true;</script><![endif]-->
