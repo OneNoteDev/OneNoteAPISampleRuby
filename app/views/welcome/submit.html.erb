@@ -1,7 +1,7 @@
 <h1>OneNote Service API Result</h1>
-<% if !@resourse_url.nil? %>
+<% if @resourse_url.present? %>
     <a href="<%=@resourse_url%>" target="_onenote"> Access to submitted resource</a>
-<% else if !@response_code.nil? %>
+<% else if @response_code.present? %>
     Error code: <%=@response_code%>
     <% end %>
 <% end %>
