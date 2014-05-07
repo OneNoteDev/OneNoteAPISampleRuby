@@ -4,14 +4,14 @@
       <p>
       <button type="button" id="login_btn" onclick="Login()">LOGIN</button>
     </p>
-  
-    <form method="POST" action="submit">
+
+    <%= form_tag submit_form_path do %>
       <button type="submit" name="submit" value="text">Create OneNote Page with Text</button> <br />
       <button type="submit" name="submit" value="textimage">Create OneNote Page with Text and Images</button><br />
       <button type="submit" name="submit" value="html">Create OneNote Page with a Screenshot of HTML</button><br />
       <button type="submit" name="submit" value="url">Create OneNote Page with a Screenshot of a URL</button><br />
       <button type="submit" name="submit" value="file">Create OneNote Page with an Embedded File</button>
-    </form>
+    <% end %>
 
 
   </div>
