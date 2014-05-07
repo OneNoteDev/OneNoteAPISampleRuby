@@ -16,15 +16,14 @@ class OneNoteSharer
     "#{OAUTH_AUTHORIZE_URL}?client_id=#{CLIENTID}&display=page&locale=en&redirect_uri=#{URI.escape(redirect_url)}"
   end
 
-  def request_access_token content
+  def request_access_token (content)
     response = RestClient.post(OAUTH_TOKEN_URL, content)
     JSON.parse(response)
   rescue Exception => exception
     nil
   end
 
-
-  def request_access_token_by_verifier verifier
+  def request_access_token_by_verifier (verifier)
     request_access_token (Array(
         'client_id' => CLIENTID,
         'redirect_uri' => CALLBACK,
@@ -34,7 +33,7 @@ class OneNoteSharer
     ))
   end
 
-  def request_access_token_by_refresh refresh_token
+  def request_access_token_by_refresh (refresh_token)
     request_access_token (Array(
         'client_id' => CLIENTID,
         'redirect_uri' => CALLBACK,
@@ -49,24 +48,24 @@ class OneNoteSharer
     nil
   end
 
-  def save_refresh_token (refreshToken)
+  def save_refresh_token (refresh_token)
     # save the refresh token and associate it with the user identified by your site credential system.
   end
 
   def handle_callback_request (params)
-    if !params['access_token'].nil?
+    if params['access_token'].present?
       return nil
     end
 
     verifier = params['code']
-    if !verifier.nil?
+    if verifier.present?
       token_set = request_access_token_by_verifier verifier
       save_refresh_token token_set['refresh_token']
       return token_set
     end
 
     refresh_token = read_refresh_token
-    if !refresh_token.nil?
+    if refresh_token.present?
       token_set = request_access_token_by_refresh refresh_token
       save_refresh_token token_set['refresh_token']
       return token_set
@@ -76,9 +75,7 @@ class OneNoteSharer
   end
 
   def get_post_headers (access_token, type=nil)
-    if access_token.nil?
-      return false
-    end
+    return false if access_token.blank?
     #Since cookies are user-supplied content, it must be encoded to avoid header injection
     encoded_access_token = URI::escape(access_token)
     if type=='multipart'
@@ -164,7 +161,7 @@ class OneNoteSharer
     JSON.parse(response)
   end
 
-  def create_page_with_screenshot_from_url access_token
+  def create_page_with_screenshot_from_url (access_token)
     headers = get_post_headers(access_token)
     date = Time.now.to_time.iso8601
 
@@ -186,7 +183,7 @@ class OneNoteSharer
     JSON.parse(response)
   end
 
-  def create_page_with_screenshot_from_html access_token
+  def create_page_with_screenshot_from_html (access_token)
     headers = get_post_headers(access_token, 'multipart')
     date = Time.now.to_time.iso8601
 
