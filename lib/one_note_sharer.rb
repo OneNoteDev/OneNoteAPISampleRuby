@@ -17,30 +17,29 @@ class OneNoteSharer
   end
 
   def request_access_token (content)
-    response = RestClient.post(OAUTH_TOKEN_URL, content)
+    payload = {
+        :client_id => CLIENTID,
+        :redirect_uri => CALLBACK,
+        :client_secret => CLIENTSECRET
+    }
+    response = RestClient.post(OAUTH_TOKEN_URL, payload.merge(content))
     JSON.parse(response)
   rescue Exception => exception
     nil
   end
 
   def request_access_token_by_verifier (verifier)
-    request_access_token (Array(
-        'client_id' => CLIENTID,
-        'redirect_uri' => CALLBACK,
-        'client_secret' => CLIENTSECRET,
-        'code' => verifier,
-        'grant_type' => 'authorization_code'
-    ))
+    request_access_token ({
+        :code => verifier,
+        :grant_type => 'authorization_code'
+    })
   end
 
   def request_access_token_by_refresh (refresh_token)
-    request_access_token (Array(
-        'client_id' => CLIENTID,
-        'redirect_uri' => CALLBACK,
-        'client_secret' => CLIENTSECRET,
-        'refresh_token' => refresh_token,
-        'grant_type' => 'refresh_token'
-    ))
+    request_access_token ({
+        :refresh_token => refresh_token,
+        :grant_type => 'refresh_token'
+    })
   end
   
   def read_refresh_token
@@ -59,15 +58,15 @@ class OneNoteSharer
 
     verifier = params['code']
     if verifier.present?
-      token_set = request_access_token_by_verifier verifier
-      save_refresh_token token_set['refresh_token']
+      token_set = request_access_token_by_verifier(verifier)
+      save_refresh_token(token_set['refresh_token'])
       return token_set
     end
 
     refresh_token = read_refresh_token
     if refresh_token.present?
-      token_set = request_access_token_by_refresh refresh_token
-      save_refresh_token token_set['refresh_token']
+      token_set = request_access_token_by_refresh(refresh_token)
+      save_refresh_token(token_set['refresh_token'])
       return token_set
     end
 
@@ -95,7 +94,7 @@ class OneNoteSharer
       <!DOCTYPE html>
       <html>
         <head>
-          <title>A page created from basic HTML-formatted text (PHP Sample)</title>
+          <title>A page created from basic HTML-formatted text (Ruby on Rails Sample)</title>
           <meta name=\"created\" value=\"#{date}\"/>
         </head>
         <body>
@@ -155,7 +154,7 @@ class OneNoteSharer
     response = RestClient.post(SHARE_URL, {
         :multipart => true,
         :Presentation => html_part,
-        :embeddedFile => File.open('Logo.jpg', 'rb')
+        :imageData => File.open('Logo.jpg', 'rb')
     }, headers)
 
     JSON.parse(response)

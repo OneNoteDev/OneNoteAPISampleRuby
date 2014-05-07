@@ -1,3 +1,5 @@
+require 'one_note_sharer'
+
 class WelcomeController < ApplicationController
   @resourse_url
 
