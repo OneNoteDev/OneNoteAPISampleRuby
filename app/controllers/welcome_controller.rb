@@ -1,4 +1,4 @@
-require 'one_note_sharer'
+require 'one_note_sharer' # see lib/one_note_sharer.rb
 
 class WelcomeController < ApplicationController
   @resourse_url
@@ -17,15 +17,15 @@ class WelcomeController < ApplicationController
 
     case params[:submit]
       when 'text'
-        result = onenote_client.create_page_with_simple_text access_token
+        result = onenote_client.create_page_with_simple_text(access_token)
       when 'textimage'
-        result = onenote_client.create_page_with_text_and_image access_token
+        result = onenote_client.create_page_with_text_and_image(access_token)
       when 'url'
-        result = onenote_client.create_page_with_screenshot_from_url access_token
+        result = onenote_client.create_page_with_screenshot_from_url(access_token)
       when 'html'
-        result = onenote_client.create_page_with_screenshot_from_html access_token
+        result = onenote_client.create_page_with_screenshot_from_html(access_token)
       when 'file'
-        result = onenote_client.create_page_with_file access_token
+        result = onenote_client.create_page_with_file(access_token)
     end
 
     @resourse_url = result['links']['oneNoteWebUrl']['href'] if result.present?
@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
 
   def callback
     onenote_client = OneNoteSharer.new
-    token_set = onenote_client.handle_callback_request (params)
+    token_set = onenote_client.handle_callback_request(params)
     if token_set.present?
       expire_in = token_set['expires_in'].to_i
       cookies['access_token'] = { :value => token_set['access_token'], :expires => expire_in.seconds.from_now }
