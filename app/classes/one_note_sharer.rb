@@ -55,13 +55,15 @@ class OneNoteSharer
   end
 
   def handleCallbackRequest (params)
+	
     if !params['access_token'].nil?
       return nil
     end
 
     verifier = params['code']
+	
     if !verifier.nil?
-      token_set = requestAccessTokenByVerifier verifier
+      token_set = requestAccessTokenByVerifier verifier	  
       saveRefreshToken token_set['refresh_token']
       return token_set
     end
@@ -99,7 +101,7 @@ class OneNoteSharer
       <!DOCTYPE html>
         <html>
           <head>
-            <title>A page created from basic HTML-formatted text (PHP Sample)</title>
+            <title>A page created from basic HTML-formatted text (Ruby on Rails Sample)</title>
             <meta name=\"created\" value=\"#{date}\"/>
           </head>
           <body>

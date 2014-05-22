@@ -10,7 +10,7 @@
     </form>
 
     <p>
-      <button type="button" id="login_btn" onclick="Login()">LOGIN</button>
+      <button type="button" id="login_btn" onclick="Login()">Login</button>
     </p>
   </div>
 </div>
@@ -57,7 +57,7 @@
 
         return popup;
     }
-
+	
     function Login ()
     {
         popup = openPopUp ("<%=raw(@auth_url)%>");
@@ -82,7 +82,7 @@
         }
         return "";
     }
-
+		
     function deleteAllCookies() {
         var cookies = document.cookie.split(";");
 
@@ -94,7 +94,7 @@
         }
     }
 
-    function checkLogin () {
+    function checkLogin () {		
         document.getElementById("login_btn").disabled = (getCookie("access_token") != "");
     }
     window.setInterval (checkLogin, 1000);

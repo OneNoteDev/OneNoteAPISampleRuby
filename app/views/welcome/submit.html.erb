@@ -1,9 +1,9 @@
 <h1>OneNote Service API Result</h1>
-<% if !@resourse_url.nil? %>
-    <a href="<%=@resourse_url%>" target="_onenote"> Access to submitted resource</a>
-<% else if !@response_code.nil? %>
-    Error code: <%=@response_code%>
-    <% end %>
+<% if !@oneNoteWeb_url.nil? %>
+    <b>Page created successfully!</b><br/><a href="<%=@oneNoteWeb_url%>" target="_onenote"> View created page on OneNote Online</a>
+<% elsif !@response_code.nil? %>
+    Error code: <%=@response_code%>    
 <% end %>
-
-<br /><a href="/">&lt;- Go back</a>
+<p></p>
+<br/>
+<a href="/">&lt;- Go back</a>

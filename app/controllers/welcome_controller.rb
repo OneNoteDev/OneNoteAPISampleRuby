@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
   end
 
   def submit
-    @resourse_url = nil
+    @oneNoteWeb_url = nil
     @response_code = nil
     oneNoteClient = OneNoteSharer.new
     access_token = cookies['access_token']
@@ -26,8 +26,9 @@ class WelcomeController < ApplicationController
 
     end
     if !result.nil?
-      @resourse_url = result['links']['oneNoteWebUrl']['href']
+      @oneNoteWeb_url = result['links']['oneNoteWebUrl']['href']
     end
+	
   rescue Exception => e
     @response = e.response
     @response_code = e.http_code
