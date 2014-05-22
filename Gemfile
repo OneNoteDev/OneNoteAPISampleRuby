@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 gem 'rest-client'
 gem 'rest-client-multipart'
+
+gem 'tzinfo-data'
+gem 'tzinfo'
