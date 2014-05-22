@@ -1,13 +1,19 @@
 <h1>OneNote Service Ruby on Rails Sample</h1>
 <div>
   <div id="OneNoteForm">
-    <form method="POST" action="submit">
+      <p>
+      <button type="button" id="login_btn" onclick="Login()">LOGIN</button>
+    </p>
+
+    <%= form_tag submit_form_path do %>
       <button type="submit" name="submit" value="text">Create OneNote Page with Text</button> <br />
       <button type="submit" name="submit" value="textimage">Create OneNote Page with Text and Images</button><br />
       <button type="submit" name="submit" value="html">Create OneNote Page with a Screenshot of HTML</button><br />
       <button type="submit" name="submit" value="url">Create OneNote Page with a Screenshot of a URL</button><br />
       <button type="submit" name="submit" value="file">Create OneNote Page with an Embedded File</button>
-    </form>
+    <% end %>
+
+
 
     <p>
       <button type="button" id="login_btn" onclick="Login()">Login</button>
