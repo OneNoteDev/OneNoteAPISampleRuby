@@ -102,7 +102,7 @@ class OneNoteSharer
         <html>
           <head>
             <title>A page created from basic HTML-formatted text (Ruby on Rails Sample)</title>
-            <meta name=\"created\" value=\"#{date}\"/>
+            <meta name=\"created\" content=\"#{date}\"/>
           </head>
           <body>
             <p>This is a page that just contains some simple <i>formatted</i> <b>text</b></p>
@@ -121,7 +121,7 @@ class OneNoteSharer
     <html>
       <head>
         <title>A page with a file on it (Ruby on Rails Sample)</title>
-        <meta name=\"created\" value=\"#{date}\"/>
+        <meta name=\"created\" content=\"#{date}\"/>
       </head>
       <body>
         <object data-attachment=\"OneNote Logo.jpg\"
@@ -145,7 +145,7 @@ class OneNoteSharer
     <html>
       <head>
         <title>A page created containing an image (Ruby on Rails Sample)</title>
-        <meta name=\"created\" value=\"#{date}\"/>
+        <meta name=\"created\" content=\"#{date}\"/>
       </head>
       <body>
         <p>This is a page that just contains some simple <i>formatted</i> <b>text</b> and an image</p>
@@ -168,7 +168,7 @@ class OneNoteSharer
     <html>
       <head>
         <title>A page created with a URL snapshot on it (Ruby on Rails Sample)</title>
-        <meta name=\"created\" value=\"#{date}\"/>
+        <meta name=\"created\" content=\"#{date}\"/>
       </head>
       <body>
         <img data-render-src=\"http://www.onenote.com\" alt=\"An important web page\" />
@@ -199,7 +199,7 @@ class OneNoteSharer
     <html>
       <head>
         <title>A page created with a screenshot of HTML on it (Ruby on Rails Sample)</title>
-        <meta name=\"created\" value=\"#{date}\"/>
+        <meta name=\"created\" content=\"#{date}\"/>
       </head>
       <body>
         <img data-render-src=\"name:HtmlForScreenshot\" />
