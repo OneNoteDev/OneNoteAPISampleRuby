@@ -28,7 +28,7 @@ Once you have your Ruby on Rails environment up and running, be sure to verify t
     
 
 You also need a normal URL with hostname (not just an IP address) to use for the Redirect URL. If you run this from your own desktop, you'll need to modify your Hosts file (in C:\Windows\System32\drivers\etc for Windows machines and /private/etc for Macs) and map your local server IP address to a new domain name, as in the following example.
- ![](images/HostsFile.png)
+ ![Modify your Hosts file and map your local server IP address to a new domain name](images/HostsFile.png)
 
 #####Microsoft Account
     
@@ -43,7 +43,7 @@ After you've setup your development tools, and installed the prerequisites liste
    2. Go to the [Microsoft app registration page](https://account.live.com/developers/applications/index).
    3. On the API Settings page, set Mobile or desktop setting to No.
    4. Set the Redirect URI to the domain name of your web site, as in the following example. The root domain name must be unique, so if you use one domain for testing and another for production, you'll need to register separate client ids and secrets for each domain.
-![](images/OneNoteMSAScreen.png)
+![Specify API settings in the Microsoft Application Registration Portal](images/OneNoteMSAScreen.png)
    5. On the App Setting page, copy the client ID and secret into the config/onenote.yml file. 
    6. Build and run the Ruby on rails app. 
    7. Open a browser and navigate to the app running by default on port 3000. 
